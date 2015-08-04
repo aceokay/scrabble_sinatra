@@ -1,8 +1,8 @@
 class String
   define_method(:scrabble) do
-    self.downcase!()
-    letters = self.split("")
-
+    letters = self.downcase().split("")
+    score = 0
+    
     vals = Hash.new()
     vals.store('d',2)
     vals.store('g',2)
@@ -21,17 +21,13 @@ class String
     vals.store('q',10)
     vals.store('z',10)
 
-    score = 0
     letters.each() do |letter|
       if(vals.has_key?(letter))
-        score = score + vals.fetch(letter)
-    
+        score += vals.fetch(letter)
       else
-        score = score + 1
-
+        score += 1
       end
     end
-
     score
   end
 end
