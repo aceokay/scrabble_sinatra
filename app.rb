@@ -8,6 +8,7 @@ get('/') do
 end
 
 get('/score') do
+  @word = params.fetch('score')
   @score = params.fetch('score').scrabble()
   erb(:score)
 end
